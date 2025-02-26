@@ -38,7 +38,7 @@ export const post = async (request: Request, response: Response) => {
   if (decodedData) {
     const jsonData = JSON.parse(decodedData);
 
-    customerId = jsonData.customer.id;
+    customerId = jsonData.id;
   }
 
   if (!customerId) {
@@ -56,7 +56,7 @@ export const post = async (request: Request, response: Response) => {
       .execute();
 
     // Execute the tasks in need
-    logger.info(customer);
+    logger.info(JSON.stringify(customer));
   } catch (error) {
     throw new CustomError(400, `Bad request: ${error}`);
   }
